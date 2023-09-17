@@ -72,7 +72,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     SharePreferenceHelper.storeUserToken(user.toString());
     SharePreferenceHelper.setuserLoginStatus(true);
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) {
-      return const HomeScreen(title: "Home");
+      return const HomeScreen();
     }));
   }
 

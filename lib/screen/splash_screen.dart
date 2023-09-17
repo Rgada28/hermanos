@@ -36,11 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
               return Text('Error: ${snapshot.error}');
             } else {
               // If user is authenticated, navigate to HomeScreen. Otherwise, go to LoginScreen.
-              return isLoggedIn
-                  ? const HomeScreen(
-                      title: 'Home',
-                    )
-                  : const LoginScreen();
+              return isLoggedIn ? const HomeScreen() : const LoginScreen();
             }
           },
         ),

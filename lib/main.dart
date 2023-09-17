@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hermanos/screen/home_screen.dart';
+import 'package:hermanos/screen/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ProviderScope(
       child: MaterialApp(
-        themeMode: ThemeMode.dark,
         darkTheme: ThemeData.dark().copyWith(
           useMaterial3: true,
           colorScheme: kDarkColorScheme,
@@ -68,7 +67,7 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         title: 'Hermanos Test',
-        home: const HomeScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

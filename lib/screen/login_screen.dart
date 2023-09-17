@@ -15,8 +15,8 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  final _usernameController = TextEditingController(text: "mor_2314");
-  final _passwordController = TextEditingController(text: "83r5^_");
+  final _usernameController = TextEditingController(/*text: "mor_2314"*/);
+  final _passwordController = TextEditingController(/* text: "83r5^_" */);
   bool isAuthenticating = false;
 
   login() async {

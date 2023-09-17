@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hermanos/model/product.dart';
@@ -8,7 +10,6 @@ import 'package:hermanos/screen/login_screen.dart';
 import 'package:hermanos/utils/user_storage.dart';
 import 'package:hermanos/widgets/product_card.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -48,57 +49,54 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             child: SizedBox(
                 height: 150.0,
                 width: 30.0,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (builder) {
-                        return const CartScreen();
-                      }),
-                    );
-                  },
-                  child: Stack(
-                    children: <Widget>[
-                      const IconButton(
-                        icon: Icon(
+                child: Stack(
+                  children: <Widget>[
+                    IconButton(
+                        icon: const Icon(
                           Icons.shopping_cart,
-                          color: Colors.amber,
                         ),
-                        onPressed: null,
-                      ),
-                      ref.read(cartProvider).products.isEmpty
-                          ? Container()
-                          : Positioned(
-                              child: Stack(
-                              children: <Widget>[
-                                Icon(Icons.brightness_1,
-                                    size: 20.0, color: Colors.green[800]),
-                                Positioned(
-                                    top: 3.0,
-                                    right: 4.0,
-                                    child: Center(
-                                      child: Text(
-                                        products.length.toString(),
-                                        style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 11.0,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    )),
-                              ],
-                            )),
-                    ],
-                  ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (builder) {
+                              return const CartScreen();
+                            }),
+                          );
+                        }),
+                    ref.read(cartProvider).products.isEmpty
+                        ? Container()
+                        : Positioned(
+                            child: Stack(
+                            children: <Widget>[
+                              Icon(Icons.brightness_1,
+                                  size: 20.0, color: Colors.green[800]),
+                              Positioned(
+                                  top: 3.0,
+                                  right: 4.0,
+                                  child: Center(
+                                    child: Text(
+                                      products.length.toString(),
+                                      style: const TextStyle(
+                                          fontSize: 11.0,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  )),
+                            ],
+                          )),
+                  ],
                 )),
           ),
           IconButton(
-              color: Colors.amber,
               onPressed: () {
                 SharePreferenceHelper.setuserLoginStatus(false);
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (builder) {
-                  return const LoginScreen();
-                }));
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (builder) {
+                      return const LoginScreen();
+                    },
+                  ),
+                );
               },
               tooltip: "Logout",
               icon: const Icon(Icons.logout))

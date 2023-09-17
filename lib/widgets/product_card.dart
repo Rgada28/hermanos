@@ -34,13 +34,6 @@ class ProductCard extends ConsumerWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              '\$${product.price.toStringAsFixed(2)}',
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
@@ -58,6 +51,13 @@ class ProductCard extends ConsumerWidget {
                   Text('(${product.rating.count})')
                 ],
               )),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              '\$${product.price.toStringAsFixed(2)}',
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(

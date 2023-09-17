@@ -27,49 +27,53 @@ class _CartButtonState extends ConsumerState<CartButton> {
   @override
   Widget build(BuildContext context) {
     return Card(
+        shadowColor: Colors.white,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            side: BorderSide(color: Colors.white)),
         child: SizedBox(
-      height: 50,
-      width: 150,
-      child: quantity == 0
-          ? TextButton(
-              child: const Text(
-                'Add Item',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              onPressed: () {
-                widget.addToCard();
+          height: 50,
+          width: 150,
+          child: quantity == 0
+              ? TextButton(
+                  child: const Text(
+                    'Add Item',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    widget.addToCard();
 
-                setState(() {
-                  quantity++;
-                });
-              },
-            )
-          : Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.remove),
-                  onPressed: () {
-                    setState(() {
-                      quantity--;
-                    });
-                  },
-                ),
-                Text(quantity.toString()),
-                IconButton(
-                  icon: const Icon(Icons.add),
-                  onPressed: () {
-                    widget.removeFromCard();
                     setState(() {
                       quantity++;
                     });
                   },
+                )
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.remove),
+                      onPressed: () {
+                        setState(() {
+                          quantity--;
+                        });
+                      },
+                    ),
+                    Text(quantity.toString()),
+                    IconButton(
+                      icon: const Icon(Icons.add),
+                      onPressed: () {
+                        widget.removeFromCard();
+                        setState(() {
+                          quantity++;
+                        });
+                      },
+                    ),
+                  ],
                 ),
-              ],
-            ),
-    ));
+        ));
   }
 }

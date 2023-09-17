@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hermanos/screen/home_screen.dart';
 import 'package:hermanos/screen/login_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hermanos/utils/user_storage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,11 +14,8 @@ class _SplashScreenState extends State<SplashScreen> {
   bool isLoggedIn = false;
 
   Future<bool> checkAuthentication() async {
-    final prefs = await SharedPreferences.getInstance();
-    String? user = prefs.getString('user');
-    print(user);
-    await Future.delayed(Duration(seconds: 2)); // Simulate a delay.
-    return isLoggedIn; // Replace with your actual authentication logic.
+    isLoggedIn = await SharePreferenceHelper.getuserLoginStatus();
+    return isLoggedIn;
   }
 
   @override

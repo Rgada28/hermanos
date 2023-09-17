@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hermanos/screen/login_screen.dart';
+import 'package:hermanos/utils/user_storage.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
@@ -22,6 +24,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                SharePreferenceHelper.setuserLoginStatus(false);
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (builder) {
+                  return const LoginScreen();
+                }));
+              },
+              tooltip: "Logout",
+              icon: const Icon(Icons.logout))
+        ],
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),

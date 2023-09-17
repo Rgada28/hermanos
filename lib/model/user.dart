@@ -1,5 +1,5 @@
 class User {
-  int id;
+  String id;
   String email;
   String username;
   String password;
@@ -10,7 +10,7 @@ class User {
 
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
-      int.tryParse(map['id']) ?? 0,
+      map['id'].toString(),
       map['email'],
       map['username'],
       map['password'],
@@ -37,8 +37,8 @@ class Name {
   Name(this.firstName, this.lastName);
   factory Name.fromMap(Map<String, dynamic> map) {
     return Name(
-      map['firstName'],
-      map['lastName'],
+      map['firstname'],
+      map['lastname'],
     );
   }
 
